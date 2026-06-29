@@ -3,7 +3,7 @@ from decimal import Decimal
 from typing import List, Optional
 from uuid import UUID
 
-from pydantic import BaseModel, EmailStr, field_validator
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
 from app.domain.enums import (
     CanalPedido, FormaPagamento, PerfilUsuario,
@@ -115,8 +115,10 @@ class ItemPedidoRequest(BaseModel):
 
 
 class CriarPedidoRequest(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     unidade_id: UUID
-    canal_pedido: CanalPedido
+    canal_pedido: CanalPedido = Field(..., validation_alias="canalPedido")
     itens: List[ItemPedidoRequest]
     forma_pagamento: FormaPagamento
 
@@ -146,17 +148,22 @@ class PagamentoResponse(BaseModel):
 
 
 class PedidoResponse(BaseModel):
+    model_config = ConfigDict(
+        populate_by_name=True,
+        from_attributes=True
+    )
+
     id: UUID
     unidade_id: UUID
-    canal_pedido: CanalPedido
+    canal_pedido: CanalPedido = Field(
+        validation_alias="canalPedido",
+        serialization_alias="canalPedido"
+    )
     status: StatusPedido
     total: Decimal
     itens: List[ItemPedidoResponse]
     pagamento: Optional[PagamentoResponse]
     criado_em: datetime
-
-    class Config:
-        from_attributes = True
 
 
 # Programa de fidelidade

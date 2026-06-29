@@ -26,7 +26,18 @@ def listar(
     db: Session = Depends(get_db),
     _: Usuario = Depends(obter_usuario_atual),
 ):
-    return listar_produtos(db, categoria)
+    produtos = listar_produtos(db, categoria)
+    return [
+        ProdutoResponse(
+            id=p.id,
+            nome=p.nome,
+            descricao=p.descricao,
+            preco=p.preco,
+            categoria=p.categoria,
+            disponivel=p.ativo,   # ← mapeamento manual aqui
+        )
+        for p in produtos
+    ]
 
 
 @router.get("/{produto_id}", response_model=ProdutoResponse, summary="Buscar produto por ID")

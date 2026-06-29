@@ -13,9 +13,7 @@ from app.api.routers.usuarios_router import router as usuarios_router
 
 import app.domain.models.models  # garante que os models são registrados no metadata
 
-Base.metadata.create_all(bind=engine)
-
-app = FastAPI(
+app = FastAPI(  
     title=settings.APP_TITLE,
     version=settings.APP_VERSION,
     description=(
