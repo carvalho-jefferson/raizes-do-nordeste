@@ -27,7 +27,7 @@ try:
         consentimento_em=datetime.utcnow(),
     )
     cliente = Usuario(
-        nome="João Silva",
+        nome="João Santos",
         email="joao@cliente.com",
         senha_hash=hash_senha("Cliente@123"),
         perfil=PerfilUsuario.CLIENTE,
@@ -35,7 +35,7 @@ try:
         consentimento_em=datetime.utcnow(),
     )
     cozinha = Usuario(
-        nome="Maria Cozinha",
+        nome="Maria da Cozinha",
         email="cozinha@raizes.com",
         senha_hash=hash_senha("Cozinha@123"),
         perfil=PerfilUsuario.COZINHA,
@@ -47,13 +47,13 @@ try:
 
     # Unidades
     unidade_recife = Unidade(
-        nome="Raízes Boa Viagem",
+        nome="Raízes do Nordeste — Unidade Recife",
         cidade="Recife",
         estado="PE",
         tipo=TipoUnidade.COMPLETA,
     )
     unidade_fortaleza = Unidade(
-        nome="Raízes Meireles",
+        nome="Raízes do Nordeste — Unidade Fortaleza",
         cidade="Fortaleza",
         estado="CE",
         tipo=TipoUnidade.REDUZIDA,
