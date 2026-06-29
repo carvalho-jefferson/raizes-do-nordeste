@@ -134,7 +134,9 @@
           ],
           "request": {
             "method": "GET",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token_cliente}}" }],
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token_cliente}}" }
+            ],
             "url": "{{base_url}}/usuarios"
           }
         }
@@ -190,7 +192,9 @@
           ],
           "request": {
             "method": "GET",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token_admin}}" }],
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token_admin}}" }
+            ],
             "url": "{{base_url}}/produtos"
           }
         }
@@ -218,7 +222,9 @@
           ],
           "request": {
             "method": "GET",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token_cliente}}" }],
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token_cliente}}" }
+            ],
             "url": "{{base_url}}/unidades"
           }
         },
@@ -270,7 +276,9 @@
           ],
           "request": {
             "method": "GET",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token_admin}}" }],
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token_admin}}" }
+            ],
             "url": {
               "raw": "{{base_url}}/pedidos?canal_pedido=APP&page=1&limit=10",
               "query": [
@@ -282,41 +290,13 @@
           }
         },
         {
-          "name": "T11 - Atualizar status do pedido (cozinha)",
+          "name": "T11 - Atualizar status do pedido → PRONTO",
           "event": [
             {
               "listen": "test",
               "script": {
                 "exec": [
                   "pm.test('T11 - Status 200 ou 409', () => {",
-                  "  pm.expect(pm.response.code).to.be.oneOf([200, 409]);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              { "key": "Content-Type", "value": "application/json" },
-              { "key": "Authorization", "value": "Bearer {{token_admin}}" }
-            ],
-            "url": "{{base_url}}/auth/login",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"email\": \"cozinha@raizes.com\",\n  \"senha\": \"Cozinha@123\"\n}"
-            },
-            "description": "Faz login como cozinha para obter token antes de atualizar status"
-          }
-        },
-        {
-          "name": "T11b - PATCH status pedido → PRONTO",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test('T11b - Status 200 ou 409 (transição pode variar)', () => {",
                   "  pm.expect(pm.response.code).to.be.oneOf([200, 409]);",
                   "});"
                 ]
@@ -432,7 +412,9 @@
           ],
           "request": {
             "method": "GET",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token_cliente}}" }],
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token_cliente}}" }
+            ],
             "url": {
               "raw": "{{base_url}}/pedidos/meus?page=1&limit=10",
               "query": [
@@ -464,7 +446,9 @@
           ],
           "request": {
             "method": "GET",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token_admin}}" }],
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token_admin}}" }
+            ],
             "url": "{{base_url}}/estoque/{{unidade_id}}"
           }
         },
@@ -518,7 +502,9 @@
           ],
           "request": {
             "method": "GET",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token_cliente}}" }],
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token_cliente}}" }
+            ],
             "url": "{{base_url}}/fidelidade/saldo"
           }
         }
