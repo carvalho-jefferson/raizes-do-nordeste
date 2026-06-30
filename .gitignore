@@ -3,6 +3,3 @@ __pycache__/
 .env
 .venv/
 venv/
-
-# ajustar antes de enviar para o repositório
-README.md

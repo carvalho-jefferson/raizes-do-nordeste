@@ -229,6 +229,31 @@
           }
         },
         {
+          "name": "T08b - Buscar cardápio da unidade (salva produto_id)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('T08b - Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('T08b - Salva produto_id do cardápio', () => {",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.length).to.be.above(0);",
+                  "  pm.collectionVariables.set('produto_id', body[0].id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token_cliente}}" }
+            ],
+            "url": "{{base_url}}/unidades/{{unidade_id}}/cardapio"
+          }
+        },
+        {
           "name": "T09 - Criar pedido válido (APP)",
           "event": [
             {
@@ -279,14 +304,7 @@
             "header": [
               { "key": "Authorization", "value": "Bearer {{token_admin}}" }
             ],
-            "url": {
-              "raw": "{{base_url}}/pedidos?canal_pedido=APP&page=1&limit=10",
-              "query": [
-                { "key": "canal_pedido", "value": "APP" },
-                { "key": "page", "value": "1" },
-                { "key": "limit", "value": "10" }
-              ]
-            }
+            "url": "{{base_url}}/pedidos?canal_pedido=APP&page=1&limit=10"
           }
         },
         {
@@ -415,13 +433,7 @@
             "header": [
               { "key": "Authorization", "value": "Bearer {{token_cliente}}" }
             ],
-            "url": {
-              "raw": "{{base_url}}/pedidos/meus?page=1&limit=10",
-              "query": [
-                { "key": "page", "value": "1" },
-                { "key": "limit", "value": "10" }
-              ]
-            }
+            "url": "{{base_url}}/pedidos/meus?page=1&limit=10"
           }
         }
       ]
