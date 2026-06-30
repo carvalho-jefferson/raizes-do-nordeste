@@ -148,9 +148,12 @@ O arquivo `raizes_postman_collection.json` está na raiz do repositório.
 1. T01 — Login admin (salva token_admin)
 2. T02 — Login cliente (salva token_cliente)
 3. T06 — Criar produto (salva produto_id)
-4. T08 — Listar unidades (salva unidade_id)
-5. T09 — Criar pedido (salva pedido_id)
-6. Demais testes em qualquer ordem
+4. T07 — Listar produtos
+5. T08 — Listar unidades (salva unidade_id)
+6. T08b — Buscar cardápio da unidade (sobrescreve produto_id com item vinculado)
+7. T17 — Entrada de estoque
+8. T09 — Criar pedido (salva pedido_id)
+9. Demais testes em qualquer ordem
 
 ---
 
